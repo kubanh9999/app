@@ -1,0 +1,30 @@
+{
+  "name": "typescript-express-crud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lemoncode21",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon ./src/index.ts",
+    "start-dev": "tsc && yarn dev"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.9",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.4",
+    "sequelize-typescript": "^2.1.6"
+  }
+}
