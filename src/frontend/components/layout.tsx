@@ -26,6 +26,7 @@ import { CustomerService } from "api/services/customer.service";
 import InfoUserPage from "pages/info_user";
 import { EventName, events } from "zmp-sdk/apis";
 import ContactPage from "pages/contact";
+import { ProductGiftPage } from "pages/product-gift";
 
 if (getSystemInfo().platform === "android") {
   const androidSafeTop = Math.round(
@@ -92,6 +93,8 @@ export const Layout: FC = () => {
       <Box className="flex-1 flex flex-col overflow-hidden">
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/product-gift/:id" element={<ProductGiftPage />} />
+          <Route path="/notification" element={<NotificationPage />}></Route>
         </Routes>
       </Box>
       <CSBottomNavigation />

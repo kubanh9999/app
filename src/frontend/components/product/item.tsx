@@ -3,8 +3,13 @@ import React, { FC, useMemo } from "react";
 import { Product } from "types/product";
 import { Box, Text } from "zmp-ui";
 import { ProductPicker } from "./picker";
+import { useNavigate } from "react-router-dom";
 
-export const ProductItem: FC<{ product: Product }> = ({ product }) => {
+type ProductItemProps = {
+  product: Product
+}
+
+export const ProductItem: FC<ProductItemProps> = ({ product}) => {
   let discount = 0
   
   console.log((product.sale));
@@ -46,7 +51,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
       zIndex: 0, // Ảnh có thứ tự z-index thấp hơn khung
     }}
   />
-            {product.price && discount != 0 && (
+            { product.price && discount != 0 && (
               <div
                 className="absolute top-0 right-0 text-red-600 font-bold"
                 style={{
@@ -100,12 +105,37 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
   
         <Text style={styles.productName}>{product.name}</Text>
         <Text size="xxSmall" className="text-gray pb-2">
-          <FinalPrice>{product}</FinalPrice>
+          {product?.price && <FinalPrice>{product}</FinalPrice>}
         </Text>
       </div>
     )}
   </ProductPicker>
   
+  );
+};
+export const GiftWrap: FC<ProductItemProps> = ({ product }) => {
+  const navigator = useNavigate()
+
+  return (
+    
+    <div className="space-y-2" onClick={() => {navigator(`/product-gift/${product.id}`)}}>
+          <Box className="w-40 aspect-square relative bg-red-700">
+            {/* Khung nền (frame) */}
+            {/* Ảnh sản phẩm */}
+            <img
+              loading="lazy"
+              src={product.image}
+              className="absolute object-cover object-center rounded-lg"
+              style={{
+                width: "100%", // Điều chỉnh kích thước ảnh để vừa khung
+                height: "100%", // Điều chỉnh chiều cao ảnh để vừa khung
+                zIndex: 0, // Ảnh có thứ tự z-index thấp hơn khung
+              }}
+            />
+          </Box>
+          
+          <Text style={styles.productName}>{product.name}</Text>
+        </div>
   );
 };
 

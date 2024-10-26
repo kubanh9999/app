@@ -9,6 +9,7 @@ import { Recommend } from "./recommend";
 import { ShowProductInHomePage } from "./product-homepage";
 import { ProductList } from "./product-list";
 import { Divider } from "components/divider";
+import { ProductGift } from "./product-list";
 
 const HomePage: React.FunctionComponent = () => {
   return (
@@ -26,7 +27,8 @@ const HomePage: React.FunctionComponent = () => {
         
         <Divider />
         <br />
-
+      <ProductGift/>
+      <br />
         <ProductList />
         {/* <ShowProductInHomePage/> */}
       </Box>

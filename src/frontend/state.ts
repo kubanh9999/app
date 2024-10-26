@@ -194,14 +194,23 @@ export const variantState = selector<any>({
 export const productsState = selector<Product[]>({
   key: "products",
   get: async ({ get }) => {
-    const products = await ProductService.getAll();
+    const products = await ProductService.getNew();
 
     // const variants = get(variantState);
 
     return products;
   },
 });
+export const giftWapSate = selector<Product[]>({
+  key: "product_types",
+  get: async ({ get }) => {
+    const products = await ProductService.giftwrap();
 
+    // const variants = get(variantState);
+
+    return products;
+  },
+});
 export const ordersState = selector<Order[]>({
   key: "orders",
   get: async () => {
@@ -338,7 +347,7 @@ export const notificationsState = atom<Notification[]>({
       image: logo,
       title: "Chào bạn mới",
       content:
-        "Cảm ơn đã sử dụng ZaUI Coffee, bạn có thể dùng ứng dụng này để tiết kiệm thời gian xây dựng",
+        "Cảm ơn bạn đã sử dụng dịch vụ zalo mini app của công ty cổ phần UIS chúc bạn có một ngày trải ngiệm thật vui vẻ",
     },
     {
       id: 2,
@@ -353,6 +362,11 @@ export const keywordState = atom({
   key: "keyword",
   default: "",
 });
+// mai làm
+export const giftProductState = atom({
+  key: "giftProductState",
+  default: [],
+})
 
 export const resultState = selector<Product[]>({
   key: "result",

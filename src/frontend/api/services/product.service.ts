@@ -17,6 +17,24 @@ export const ProductService = {
       return [];
     }
   },
+  giftwrap: async (): Promise<Product[]> => {
+    try {
+      return await AxiosClient.get("/product_types");
+    } catch (error) {
+      return [];  
+    }
+  },
+  getGiftwrapId: async (id: string): Promise<Product | null> => { // Đảm bảo trả về một sản phẩm hoặc null
+    try {
+        const response = await AxiosClient.get(`/product_types/${id}`);
+        
+        return response as any; // Trả về null nếu không có dữ liệu
+    } catch (error) {
+        console.error("Lỗi khi gọi API:", error);
+        return null; // Trả về null nếu có lỗi
+    }
+},
+
   getByCategoryId: async (categoryId: string): Promise<Product[]> => {
     return await AxiosClient.get(`/product/category/id/${categoryId}`);
   },
